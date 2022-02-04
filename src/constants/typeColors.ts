@@ -1,0 +1,21 @@
+
+export const typeColors = [
+    {type:"bug", color:"bg-orange-500"},
+    {type:"dark", color:"bg-orange-500"},
+    {type:"electric", color:"bg-yellow-500"},
+    {type:"dragon", color:"bg-orange-500"},
+    {type:"fairy", color:"bg-orange-500"},
+    {type:"fighting", color:"bg-red-500"},
+    {type:"fire", color:"bg-orange-500"},
+    {type:"flying", color:"bg-indigo-500"},
+    {type:"ghost", color:"bg-orange-500"},
+    {type:"grass", color:"bg-lime-500"},
+    {type:"ground", color:"bg-orange-500"},
+    {type:"ice", color:"bg-orange-500"},
+    {type:"normal", color:"bg-orange-300"},
+    {type:"poison", color:"bg-purple-800"},
+    {type:"psychic", color:"bg-orange-500"},
+    {type:"rock", color:"bg-orange-500"},
+    {type:"steel", color:"bg-orange-500"},
+    {type:"water", color:"bg-blue-500"},
+]
