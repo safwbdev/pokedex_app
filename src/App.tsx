@@ -8,6 +8,7 @@ import TypeSection from './components/typeSection';
 import AbilitiesSection from './components/AbilitiesSection';
 import OtherInfo from './components/OtherInfo';
 import StatSection from './components/StatSection';
+import { FaSearch } from 'react-icons/fa';
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
   const handleSubmit =():void=>{
     dispatch(getPokemon(pokemonName))
   }
-
+  
   const getOrderNo =(n:any)=> {
     let len = 3 - (''+n).length;
     let fullNo = (len > 0 ? new Array(++len).join('0') : '') + n
@@ -42,10 +43,11 @@ function App() {
     <div className="App">
       <Navbar />
       <div className='flex items-center p-2'>
-        <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' type="text" onChange={handleChange} />
-        <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' onClick={handleSubmit}>Search</button>
+        <input className='shadow appearance-none border rounded-l w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' type="text" onChange={handleChange} />
+        <button className='bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-r focus:outline-none focus:shadow-outline' onClick={handleSubmit}><FaSearch/></button>
       </div>
     <div>
+      
     {pokemon && (
       <div className="flex flex-wrap">
         <div className='w-full'>

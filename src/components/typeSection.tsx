@@ -8,20 +8,23 @@ const TypeSection = (data:any) => {
           if ( getType === type){
             getColor = color;
           }
+          return null;
         })
     return getColor
     }   
     
   return (
     <>
-        <div className='font-bold text-l mb-2'>Types</div>
+        <div className='font-bold text-l mb-2 mt-2'>Types</div>
+        <div className='mb-4'>
             {data.data.map((val:any) =>(
-            <span  
+              <span  
                 key={val.type.name}
                 className={`${getBG(val.type.name)} capitalize inline-block rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2`} >
                 {val.type.name}
-            </span>
+              </span>
             ))}
+            </div>
         <hr />
         </>
     );

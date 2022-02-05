@@ -39,12 +39,15 @@ const StatSection = ({data}:any) => {
       
     return (
         <>
-            <div className='font-bold text-l mb-2'>Statistics</div>
+            <div className='font-bold text-l mb-2 mt-2'>Statistics</div>
+            <div className="mb-4">
+
             {data.map((val:any) => (
                 <div className='flex ' key={val.stat.name}>
                     {getStat(trimName(val.stat.name), val.base_stat)}
                 </div>
             ))}
+            </div>
         </>
     
   )

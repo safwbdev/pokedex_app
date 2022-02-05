@@ -9,10 +9,16 @@ const OtherInfo = (data:any) => {
   
   return (
       <>
-    <h5 className='font-bold text-l mb-2'>Other Info</h5>
-    <p className='inline-block px-3 py-1'><FaRulerVertical /> {getHeight(data.height)}</p>
-    <p className='inline-block px-3 py-1'><FaWeightHanging /> {getWeight(data.weight)}</p>
-    <hr />
+        <h5 className='font-bold text-l mb-2 mt-2'>Other Info</h5>
+        <div className="flex flex-wrap mb-4">
+          <div className='w-1/2 flex flex-wrap items-center justify-center'>
+            <FaRulerVertical /> <span className='px-1'>{getHeight(data.height)}</span>
+          </div>
+          <div className='w-1/2 flex flex-wrap items-center justify-center'>
+            <FaWeightHanging /> <span className='px-1'>{getWeight(data.weight)}</span>
+          </div>
+        </div>
+        <hr />
     </>
   )
 };

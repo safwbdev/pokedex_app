@@ -27,8 +27,8 @@ const pokemonReducer =(state: DefaultStateI = defaultState,action: pokemonDispat
                 loading:false,
                 pokemon:action.payload
             }
-            default:
-                return state
+        default:
+            return state
 
     
        

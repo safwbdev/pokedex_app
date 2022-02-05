@@ -5,12 +5,13 @@ const AbilitiesSection = (data:any) => {
     
     return (
         <>
-            <div className='font-bold text-l mb-2'>Abilities</div>
-            {data.data.map((ability:any) =>{
-                return <span className='capitalize inline-block px-3 py-1' key={ability.ability.name}>{trimName(ability.ability.name)}</span>
-            })}
-
-          <hr />
+            <div className='font-bold text-l mb-2 mt-2'>Abilities</div>
+            <div className='mb-4'>
+                {data.data.map((ability:any) =>{
+                    return <span className='capitalize inline-block px-3 py-1' key={ability.ability.name}>{trimName(ability.ability.name)}</span>
+                })}
+            </div>
+            <hr />
         </>
     );
 };
