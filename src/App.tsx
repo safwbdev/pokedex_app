@@ -2,64 +2,41 @@ import React, { ChangeEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import Navbar from './components/Navbar';
-import { typeColors } from './constants/typeColors';
 import { getPokemon } from './redux/actions/pokeActions';
 import { rootStore } from './redux/store';
+import TypeSection from './components/typeSection';
+import AbilitiesSection from './components/AbilitiesSection';
+import OtherInfo from './components/OtherInfo';
+import StatSection from './components/StatSection';
+
 
 function App() {
   const dispatch = useDispatch();
-  const [pokemonName, setPokemonName] = useState("pikachu");
+  const [pokemonName, setPokemonName] = useState("charizard");
   const pokemonState = useSelector((state: rootStore) => state.pokemon);
 
-  const handleChange =(event:ChangeEvent<HTMLInputElement>)=>{
+  const handleChange =(event:ChangeEvent<HTMLInputElement>):void=>{
     setPokemonName(event.target.value);
   }
-  const handleSubmit =()=>{
+  const handleSubmit =():void=>{
     dispatch(getPokemon(pokemonName))
   }
 
-  const trimName =(name:string):string=>{
-    return name.replace("-"," ");
+  const getOrderNo =(n:any)=> {
+    let len = 3 - (''+n).length;
+    let fullNo = (len > 0 ? new Array(++len).join('0') : '') + n
+    return `# ${fullNo}`
   }
 
-  const getHeight =(height:any):string=>{
-    return `${height/10} m`;
-  }
-  const getWeight =(weight:any):string=>{
-    return `${weight/10} kg`;
-  }
-  const getBG =(getType:string):string=>{
-    let getColor = ''
-    typeColors.map(({type, color})=>{
-      if ( getType === type){
-        getColor = color;
-      }
-    })
-    return getColor
-  }
 
-  const calculateStat =(getStat:number):number=>{
-    return (getStat * 50) /100;
-  }
-
-  const getStat = (statName:string, statPercent:number) =>(
-    <div className='flex '>
-      <div className={`w-1/3 text-right px-2 capitalize justify-center`}>
-        {statName}
-      </div>
-      <div className='w-2/3 px-3'>
-        <div className="w-full bg-gray-200">
-          <div 
-            className="bg-blue-600 text-base font-medium text-blue-100 text-center p-0.5 leading-none" 
-            style={{width: `${calculateStat(statPercent)}%`}}>
-              {statPercent}
-          </div>
-        </div>
-      </div>
-    </div>
-  )
 
   const { pokemon } = pokemonState
+
+
+  // for (let i=1;i<=150;i++){
+  //   console.log(i)
+  // }
+
   
   return (
     <div className="App">
@@ -70,27 +47,22 @@ function App() {
       </div>
     <div>
     {pokemon && (
-      <div>
-        <h2 className="text-3xl font-bold capitalize">{pokemon.name} | {`# ${pokemon.order}`}</h2>
-        <img src={pokemon.sprites.other.home.front_default} alt='' style={{width:"100%"}}/>
-        <div className='font-bold text-l mb-2'>Types</div>
-        {pokemon.types.map(({type}) =>{
-          return <span className={`${getBG(type.name)} capitalize inline-block rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2`} key={type.name}>{type.name}</span>
-        })}
-        <hr />
-        <div className='font-bold text-l mb-2'>Abilities</div>
-        {pokemon.abilities.map(({ability}) =>{
-          return <span className='capitalize inline-block px-3 py-1' key={ability.name}>{trimName(ability.name)}</span>
-        })}
-        <hr />
-        <div className='font-bold text-l mb-2'>Statistics</div>
-        {pokemon.stats.map(({base_stat, stat}) =>{
-          return getStat(trimName(stat.name), base_stat)
-        })}
-        <hr />
-        <h5 className='font-bold text-l mb-2'>Other Info</h5>
-        <p className='inline-block px-3 py-1'>Height: {getHeight(pokemon.height)}</p>
-        <p className='inline-block px-3 py-1'>Weight: {getWeight(pokemon.weight)}</p>
+      <div className="flex flex-wrap">
+        <div className='w-full'>
+          <h2 className="text-3xl font-bold capitalize">{getOrderNo(pokemon.id)} | {pokemon.name}</h2>
+        </div>
+        <div className='w-full md:w-1/4'>
+          <img src={pokemon.sprites.other.home.front_default} alt='' style={{width:"100%"}}/>
+        </div>
+        <div className='w-full md:w-1/5'>
+          <TypeSection data={pokemon.types}/>
+          <AbilitiesSection data={pokemon.abilities}/>
+          <OtherInfo weight={pokemon.weight}  height={pokemon.height} />
+        </div>
+        <div className='w-full md:w-1/2'>        
+          <StatSection data={pokemon.stats} />
+        </div>
+       
         
       </div>
     )}
