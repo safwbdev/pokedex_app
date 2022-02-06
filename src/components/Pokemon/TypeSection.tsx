@@ -1,4 +1,4 @@
-import { typeColors } from '../constants/typeColors';
+import { typeColors } from '../../constants/typeColors';
 
 const TypeSection = (data:any) => {
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { AbilitiesSection, OtherInfo, StatSection, TypeSection } from '.';
+import { AbilitiesSection, OtherInfo, StatSection, TypeSection } from '..';
 
 const Pokemon = ({data}:any) => {
 

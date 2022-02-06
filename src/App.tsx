@@ -1,19 +1,17 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
-import {Navbar,Pokemon,PokemonBox} from './components';
+import { Navbar, Pokemon, PokemonBox} from './components';
 import { getPokemon } from './redux/actions/pokemonActions';
+import { getAllPokemon } from './redux/actions/allPokemonActions';
 import { rootStore } from './redux/store';
 import { FaSearch } from 'react-icons/fa';
-import { getAllPokemon } from './redux/actions/allPokemonActions';
-// import PokemonBox from './components/PokemonBox';
-
 
 function App() {
-  const dispatch = useDispatch();
   const [pokemonName, setPokemonName] = useState("charizard");
   const pokemonState = useSelector((state: rootStore) => state.pokemon);
   const allPokemonState = useSelector((state: rootStore) => state.allPokemon);
+  const dispatch = useDispatch();
 
   const handleChange =(event:ChangeEvent<HTMLInputElement>):void => setPokemonName(event.target.value);
   const handleSubmit =():void=>{
@@ -22,8 +20,8 @@ function App() {
 
   useEffect(() => {
     dispatch(getAllPokemon())
-  }, []);
-  
+  }, [dispatch]);
+
   const { pokemon } = pokemonState;
 
   return (
@@ -35,7 +33,7 @@ function App() {
       </div>
     <div>
 
-    {allPokemonState && (
+    {allPokemonState && !pokemon && (
       <div className="flex flex-wrap">
           {allPokemonState.allPokemon?.map((val,index)=>{
             return(

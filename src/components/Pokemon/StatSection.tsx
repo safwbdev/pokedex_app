@@ -1,5 +1,5 @@
 import React from 'react';
-import { statColors } from '../constants/statColors';
+import { statColors } from '../../constants/statColors';
 
 const StatSection = ({data}:any) => {
 
