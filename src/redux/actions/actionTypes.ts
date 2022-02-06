@@ -27,13 +27,14 @@ export type caughtPokemon = {
     }
 }
 
-export type allPokemon = {
-    allPokemon:{
-        name:pokemonName,
-        id:pokemonId,
-        sprites: pokemonSprites,
-    }
-}
+export type allPokemon = pokemonType[];
+// export type allPokemon = {
+    // allPokemon:{
+    //     name:pokemonName,
+    //     id:pokemonId,
+    //     sprites: pokemonSprites,
+    // }
+
 
 export type pokemonAbility = {
     ability:{
@@ -102,7 +103,7 @@ export interface allPokemonFail {
 
 export interface allPokemonSuccess {
     type:typeof ALL_POKEMON_SUCCESS,
-    payload: pokemonType
+    payload: allPokemon
 }
 
 export type allPokemonDispatchTypes = allPokemonLoading | allPokemonFail | allPokemonSuccess
