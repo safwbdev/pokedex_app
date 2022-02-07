@@ -7,5 +7,6 @@ import StatSection from "./Pokemon/StatSection";
 import TypeSection from "./Pokemon/TypeSection";
 import AllPokemon from "./AllPokemon";
 import BottomNavbar from "./Navigation/BottomNavbar";
+import UnderConstruction from "./UnderConstruction";
 
-export  { TopNavbar, PokemonBox, Pokemon, TypeSection, OtherInfo, StatSection, AbilitiesSection, AllPokemon, BottomNavbar }
+export  { UnderConstruction, TopNavbar, PokemonBox, Pokemon, TypeSection, OtherInfo, StatSection, AbilitiesSection, AllPokemon, BottomNavbar }
