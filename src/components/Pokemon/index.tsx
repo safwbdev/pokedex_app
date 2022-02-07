@@ -1,29 +1,48 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { AbilitiesSection, OtherInfo, StatSection, TypeSection } from '..';
+import { rootStore } from './../../redux/store';
+import { getPokemon } from './../../redux/actions/pokemonActions';
 
-const Pokemon = ({data}:any) => {
+const Pokemon = () => {
+    
+    const { id } = useParams();
 
+    const dispatch = useDispatch();
+    const pokemonState = useSelector((state: rootStore) => state.pokemon);
     const getOrderNo =(n:any)=> {
         let len = 3 - (''+n).length;
         let fullNo = (len > 0 ? new Array(++len).join('0') : '') + n
         return `# ${fullNo}`
     }
-
-    return (<div className="flex flex-wrap">
-                <div className='w-full'>
-                    <h2 className="text-3xl font-bold capitalize">{getOrderNo(data.id)} | {data.name}</h2>
-                </div>
-                <div className='w-full md:w-1/4'>
-                    <img src={data.sprites.other.home.front_default} style={{width:"100%"}} alt={data.name}/>
-                </div>
-                <div className='w-full md:w-1/5'>
-                    <TypeSection data={data.types}/>
-                    <AbilitiesSection data={data.abilities}/>
-                    <OtherInfo weight={data.weight}  height={data.height} />
-                </div>
-                <div className='w-full md:w-1/2'>
-                    <StatSection data={data.stats} />
-                </div>
+    
+    useEffect(() => {
+        dispatch(getPokemon(id!))
+    }, [id, dispatch]);
+    
+    const { pokemon } = pokemonState;
+    
+    
+    return (<div className="flex flex-wrap pt-20">
+                {pokemon && (
+                    <>
+                        <div className='w-full md:w-1/4'>
+                            <img src={pokemon.sprites.other.home.front_default} style={{width:"100%"}} alt={pokemon.name.toString()} />
+                        </div>
+                        <div className='w-full'>
+                            <h2 className="text-3xl font-bold capitalize">{getOrderNo(pokemon.id)} | {pokemon.name}</h2>
+                        </div>
+                        <div className='w-full md:w-1/5'>
+                            <TypeSection data={pokemon.types}/>
+                            <AbilitiesSection data={pokemon.abilities}/>
+                            <OtherInfo weight={pokemon.weight}  height={pokemon.height} />
+                        </div>
+                        <div className='w-full md:w-1/2'>
+                            <StatSection data={pokemon.stats} />
+                        </div> 
+                    </>
+                )}
             </div>);
 };
 

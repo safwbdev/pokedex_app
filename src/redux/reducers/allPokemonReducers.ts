@@ -1,4 +1,4 @@
-import { allPokemon, allPokemonDispatchTypes, ALL_POKEMON_FAIL, ALL_POKEMON_LOADING, ALL_POKEMON_SUCCESS, pokemonType } from "../actions/actionTypes";
+import { allPokemon, allPokemonDispatchTypes, ALL_POKEMON_FAIL, ALL_POKEMON_LOADING, ALL_POKEMON_SUCCESS } from "../actions/actionTypes";
 
 interface DefaultStateI {
     loading:boolean,
