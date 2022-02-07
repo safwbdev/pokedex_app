@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { FaHome, FaSearch } from "react-icons/fa";
 // import { MdOutlineCatchingPokemon } from "react-icons/md";
 import { DiModernizr } from "react-icons/di";
@@ -7,7 +7,7 @@ import { toggleMode } from '../../redux/actions/modeAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { rootStore } from '../../redux/store';
 
-const BottomNavbar = () => {
+const BottomNavbar:FC = () => {
     const mode = useSelector((state: rootStore) => state.mode);
     const dispatch = useDispatch()
     const toggleSwitch = () => dispatch(toggleMode(mode.classicMode));

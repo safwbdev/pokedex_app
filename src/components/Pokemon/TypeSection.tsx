@@ -1,7 +1,11 @@
+import { FC } from 'react';
 import { typeColors } from '../../constants/typeColors';
 
-const TypeSection = (data:any) => {
+interface Props{
+  data:any,
+}
 
+const TypeSection:FC<Props> = (data) => {
     const getBG =(getType:string):string=>{
         let getColor = '';
         typeColors.map(({type, color})=>{

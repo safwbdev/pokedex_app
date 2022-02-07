@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { PokemonBox } from '.';
 
-const AllPokemon = ({data}:any) => {
+interface Props{
+    data:any
+}
+
+const AllPokemon:FC<Props> = ({data}) => {
 
 
     return (<div className='flex flex-wrap py-20'>

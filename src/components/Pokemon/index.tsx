@@ -1,18 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { AbilitiesSection, OtherInfo, StatSection, TypeSection } from '..';
 import { rootStore } from './../../redux/store';
 import { getPokemon } from './../../redux/actions/pokemonActions';
 
-const Pokemon = () => {
+const Pokemon:FC = () => {
     
     const { id } = useParams();
 
     const dispatch = useDispatch();
     const pokemonState = useSelector((state: rootStore) => state.pokemon);
     const mode = useSelector((state: rootStore) => state.mode);
-    const getOrderNo =(n:any)=> {
+    
+    const getOrderNo =(n:any):string=> {
         let len = 3 - (''+n).length;
         let fullNo = (len > 0 ? new Array(++len).join('0') : '') + n
         return `# ${fullNo}`

@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-const AbilitiesSection = (data:any) => {
+interface Props{
+    data:any
+}
+
+const AbilitiesSection:FC<Props> = (data) => {
     const trimName =(name:string):string=> name.replace("-"," ");
     
     return (

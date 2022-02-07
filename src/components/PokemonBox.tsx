@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { rootStore } from './../redux/store';
 
-const PokemonBox = ({data}:any) => {
+interface Props{
+    data:any
+}
+
+const PokemonBox:FC<Props> = ({data}) => {
     const mode = useSelector((state: rootStore) => state.mode);
 
     const trimName =(name:string):string=> name.replace("-"," ");

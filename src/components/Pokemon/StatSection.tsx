@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { statColors } from '../../constants/statColors';
 
-const StatSection = ({data}:any) => {
+interface Props{
+    data:any
+}
+
+const StatSection:FC<Props> = ({data}) => {
 
     const trimName =(name:string):string=> name.replace("-"," ");
 
