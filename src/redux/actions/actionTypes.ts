@@ -6,6 +6,7 @@ export const ALL_POKEMON_SUCCESS = "ALL_POKEMON_SUCCESS";
 export const ALL_POKEMON_FAIL = "ALL_POKEMON_FAIL";
 export const ADD_POKEMON_CAUGHT = "ADD_POKEMON_CAUGHT";
 export const REMOVE_POKEMON_CAUGHT = "REMOVE_POKEMON_CAUGHT";
+export const CHANGE_MODE = "CHANGE_MODE";
 
 
 export type pokemonType = {
@@ -19,6 +20,12 @@ export type pokemonType = {
     name:pokemonName,
     id:pokemonId,
 }
+export type pokemonTypeSimplified = {
+    sprites: pokemonSprites,
+    order:pokemonOrder,
+    name:pokemonName,
+    id:pokemonId,
+}
 
 export type caughtPokemon = {
     caught:{
@@ -27,14 +34,7 @@ export type caughtPokemon = {
     }
 }
 
-export type allPokemon = pokemonType[];
-// export type allPokemon = {
-    // allPokemon:{
-    //     name:pokemonName,
-    //     id:pokemonId,
-    //     sprites: pokemonSprites,
-    // }
-
+export type allPokemon = pokemonTypeSimplified[];
 
 export type pokemonAbility = {
     ability:{
@@ -72,6 +72,9 @@ export type pokemonHeight = {
 export type pokemonWeight = {
     weight:number
 }
+export type pokemonClassicMode = {
+    classicMode:boolean
+}
 
 export type pokemonStat = {
     base_stat:number,
@@ -104,6 +107,10 @@ export interface allPokemonFail {
 export interface allPokemonSuccess {
     type:typeof ALL_POKEMON_SUCCESS,
     payload: allPokemon
+}
+export interface CHANGE_MODEI {
+    type:typeof CHANGE_MODE,
+    payload: boolean
 }
 
 export type allPokemonDispatchTypes = allPokemonLoading | allPokemonFail | allPokemonSuccess

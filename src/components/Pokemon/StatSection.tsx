@@ -21,13 +21,13 @@ const StatSection = ({data}:any) => {
 
     const getStat = (statName:string, statPercent:number) =>(
         <>
-            <div className={`w-1/3 text-right px-2 capitalize justify-center`}>
+            <div className={`w-1/3 text-right px-1 pb-1 capitalize justify-center text-sm`}>
                 {statName}
             </div>
             <div className='w-2/3 px-3'>
                 <div className="w-full bg-gray-200">
                     <div 
-                        className={`${getStatColor(statName)} text-base font-medium text-blue-100 text-center p-0.5 leading-none`} 
+                        className={`${getStatColor(statName)} text-base font-medium text-white text-center p-0.5 leading-none`} 
                         style={{width: `${calculateStat(statPercent)}%`}}>
                         {statPercent}
                     </div>

@@ -14,3 +14,10 @@ code {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.logo-rotate svg {
+  transform: rotate(180deg);
+}
+.bottom-nav-btn svg {
+  display: inline;
+}

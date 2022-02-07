@@ -12,10 +12,10 @@ const OtherInfo = (data:any) => {
         <h5 className='font-bold text-l mb-2 mt-2'>Other Info</h5>
         <div className="flex flex-wrap mb-4">
           <div className='w-1/2 flex flex-wrap items-center justify-center'>
-            <FaRulerVertical /> <span className='px-1'>{getHeight(data.height)}</span>
+            <FaRulerVertical /> <span className='px-1'>Height :  {getHeight(data.height)}</span>
           </div>
           <div className='w-1/2 flex flex-wrap items-center justify-center'>
-            <FaWeightHanging /> <span className='px-1'>{getWeight(data.weight)}</span>
+            <FaWeightHanging /> <span className='px-1'>Weight :  {getWeight(data.weight)}</span>
           </div>
         </div>
         <hr />

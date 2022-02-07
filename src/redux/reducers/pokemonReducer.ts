@@ -11,7 +11,7 @@ const defaultState: DefaultStateI = {
 };
 
 
-const pokemonReducer =(state: DefaultStateI = defaultState,action: pokemonDispatchTypes) : DefaultStateI =>{
+const pokemonReducer =(state: DefaultStateI = defaultState, action: pokemonDispatchTypes) : DefaultStateI =>{
 
     switch (action.type) {
         case POKEMON_FAIL:

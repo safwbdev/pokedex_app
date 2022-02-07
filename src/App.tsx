@@ -3,18 +3,17 @@ import {
   // ChangeEvent, 
   // useState
  } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
-import { Navbar, Pokemon} from './components';
-// import { getPokemon } from './redux/actions/pokemonActions';
+import { useDispatch, useSelector } from 'react-redux';
 import { getAllPokemon } from './redux/actions/allPokemonActions';
 import { rootStore } from './redux/store';
-import AllPokemon from './components/AllPokemon';
+import { TopNavbar, BottomNavbar, Pokemon, AllPokemon, UnderConstruction} from './components';
 import { BrowserRouter as Router,
   Routes,
   Route,
 } from "react-router-dom";
-// import { FaSearch } from 'react-icons/fa';
+// import { getPokemon } from './redux/actions/pokemonActions';
+
 
 function App() {
   // const [pokemonName, setPokemonName] = useState("charizard");
@@ -36,11 +35,15 @@ function App() {
   return (
     <Router>
      <div className="App">
-       <Navbar />
+      <TopNavbar />
       <Routes>
           <Route path="/" element={<AllPokemon data={allPokemonState}/>} />
           <Route path="/pokemon/:id" element={<Pokemon />} />
+          <Route path="/search" element={<UnderConstruction title="Search Section" />} />
+          <Route path="/caught" element={<UnderConstruction title="Caught Collection" />} />
+
         </Routes>
+        <BottomNavbar/>
       </div>
     </Router>
   
