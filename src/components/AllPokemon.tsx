@@ -5,7 +5,7 @@ import { PokemonBox } from '.';
 const AllPokemon = ({data}:any) => {
 
 
-    return (<div className='flex flex-wrap pt-20'>
+    return (<div className='flex flex-wrap py-20'>
                 {data.loading && (
                 <div className='h-screen flex justify-center items-center w-full'>
                 <h2>Loading...</h2></div>

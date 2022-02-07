@@ -24,7 +24,7 @@ const Pokemon = () => {
     
     const { pokemon } = pokemonState;
     
-    return (<div className="flex flex-wrap pt-20">
+    return (<div className="flex flex-wrap py-20">
                 {pokemon && (
                     <>
                         <div className='w-full md:w-1/4'>

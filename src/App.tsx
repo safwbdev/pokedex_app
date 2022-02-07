@@ -41,7 +41,6 @@ function App() {
           <Route path="/pokemon/:id" element={<Pokemon />} />
           <Route path="/search" element={<UnderConstruction title="Search Section" />} />
           <Route path="/caught" element={<UnderConstruction title="Caught Collection" />} />
-
         </Routes>
         <BottomNavbar/>
       </div>
