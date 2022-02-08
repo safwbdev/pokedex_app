@@ -1,10 +1,10 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { AbilitiesSection, OtherInfo, StatSection, TypeSection } from '..';
 import { rootStore } from './../../redux/store';
-import { getPokemon } from './../../redux/actions/pokemonActions';
-
+import { getNextPokemon, getPokemon, getPrevPokemon } from './../../redux/actions/pokemonActions';
+import {AiFillCaretLeft, AiFillCaretRight} from "react-icons/ai"
 const Pokemon:FC = () => {
     
     const { id } = useParams();
@@ -12,6 +12,9 @@ const Pokemon:FC = () => {
     const dispatch = useDispatch();
     const pokemonState = useSelector((state: rootStore) => state.pokemon);
     const mode = useSelector((state: rootStore) => state.mode);
+    const nextPokemonState = useSelector((state: rootStore) => state.nextPokemon);
+    const prevPokemonState = useSelector((state: rootStore) => state.prevPokemon);
+    const trimName =(name:string):string=> name.replace("-"," ");
     
     const getOrderNo =(n:any):string=> {
         let len = 3 - (''+n).length;
@@ -21,9 +24,18 @@ const Pokemon:FC = () => {
     
     useEffect(() => {
         dispatch(getPokemon(id!))
+        dispatch(getNextPokemon(parseInt(id!)))
+        dispatch(getPrevPokemon(parseInt(id!)))
     }, [id, dispatch]);
     
     const { pokemon } = pokemonState;
+    const { nextPokemon } = nextPokemonState;
+    const { prevPokemon } = prevPokemonState;
+
+    // console.log("prev")
+    // console.log(prevPokemon)
+    // console.log("next")
+    // console.log(nextPokemon)
     
     return (<div className="flex flex-wrap py-20">
                 {pokemon && (
@@ -33,7 +45,7 @@ const Pokemon:FC = () => {
                             {/* <img src={pokemon.sprites.other.home.front_default} style={{width:"100%"}} alt={pokemon.name.toString()} /> */}
                         </div>
                         <div className='w-full'>
-                            <h2 className="text-3xl font-bold capitalize">{getOrderNo(pokemon.id)} | {pokemon.name}</h2>
+                            <h2 className="text-3xl font-bold capitalize">{getOrderNo(pokemon.id)} | {pokemon && trimName(pokemon.name.toString())}</h2>
                         </div>
                         <div className='w-full md:w-1/5'>
                             <TypeSection data={pokemon.types}/>
@@ -43,6 +55,25 @@ const Pokemon:FC = () => {
                         <div className='w-full md:w-1/2'>
                             <StatSection data={pokemon.stats} />
                         </div> 
+                        { prevPokemon && (
+                        <div className='w-1/2'>
+                            <Link to={`/pokemon/${prevPokemon.id}`}>
+                                <div className='flex items-center justify-around'>
+                                    <AiFillCaretLeft />
+                                    <span className='capitalize'>{prevPokemon && trimName(prevPokemon?.name.toString())}</span>
+                                </div>
+                            </Link>
+                        </div>
+                        )}
+                        {nextPokemon && (
+                            <div className='w-1/2'>
+                                <Link to={`/pokemon/${nextPokemon.id}`}>
+                                    <div className='flex items-center justify-around'>
+                                        <span className='capitalize'>{nextPokemon && trimName(nextPokemon?.name.toString())}</span><AiFillCaretRight />
+                                    </div>
+                                </Link>
+                            </div>
+                        )}
                     </>
                 )}
             </div>);

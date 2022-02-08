@@ -1,5 +1,7 @@
 export const POKEMON_LOADING = "POKEMON_LOADING";
 export const POKEMON_SUCCESS = "POKEMON_SUCCESS";
+export const POKEMON_SUCCESS_PREV = "POKEMON_SUCCESS_PREV";
+export const POKEMON_SUCCESS_NEXT = "POKEMON_SUCCESS_NEXT";
 export const POKEMON_FAIL = "POKEMON_FAIL";
 export const ALL_POKEMON_LOADING = "ALL_POKEMON_LOADING";
 export const ALL_POKEMON_SUCCESS = "ALL_POKEMON_SUCCESS";
@@ -94,8 +96,20 @@ export interface pokemonSuccess {
     type:typeof POKEMON_SUCCESS,
     payload: pokemonType
 }
+export interface pokemonSuccessPrev {
+    type:typeof POKEMON_SUCCESS_PREV,
+    payload: pokemonTypeSimplified
+}
+export interface pokemonSuccessNext {
+    type:typeof POKEMON_SUCCESS_NEXT,
+    payload: pokemonTypeSimplified
+}
 
 export type pokemonDispatchTypes = pokemonLoading | pokemonFail | pokemonSuccess
+
+export type pokemonDispatchTypesPrev =  pokemonFail | pokemonSuccessPrev
+
+export type pokemonDispatchTypesNext =  pokemonFail | pokemonSuccessNext
 
 export interface allPokemonLoading {
     type:typeof ALL_POKEMON_LOADING
