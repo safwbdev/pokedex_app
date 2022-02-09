@@ -1,11 +1,12 @@
 import React, { FC } from 'react';
-import { FaHome, FaSearch } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 import { DiModernizr } from "react-icons/di";
+// import { MdOutlineCatchingPokemon } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import { toggleMode } from '../../redux/actions/modeAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { rootStore } from '../../redux/store';
-import { BOTTOM_NAV_HOME, BOTTOM_NAV_MODE, BOTTOM_NAV_SEARCH } from '../../constants/lang';
+import { BOTTOM_NAV_HOME, BOTTOM_NAV_MODE } from '../../constants/lang';
 
 const BottomNavbar:FC = () => {
     const mode = useSelector((state: rootStore) => state.mode);
@@ -29,12 +30,6 @@ const BottomNavbar:FC = () => {
                         <span className="tab tab-whishlist block text-xs">Caught</span>
                     </Link>
                 </div> */}
-                <div className="bottom-nav-btn w-full text-white focus:text-yellow-500 hover:text-yellow-500 justify-center inline-block text-center pt-2 pb-1">
-                    <Link to="/search">
-                        <FaSearch />
-                        <span className="tab tab-account block text-xs">{BOTTOM_NAV_SEARCH}</span>
-                    </Link>
-                </div>
                 <div 
                     onClick={toggleSwitch}
                     className={`bottom-nav-btn w-full ${mode.classicMode ? "text-yellow-500" : "text-white"} justify-center inline-block text-center pt-2 pb-1`}>

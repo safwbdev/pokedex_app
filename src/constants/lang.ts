@@ -1,5 +1,8 @@
 // TOP NAVIGATION 
 export const TOP_NAV_TITLE ="Pokedex";
+export const SEARCH_POKEMON ="Search Pokemon";
+export const CLASSIC_MODE ="Classic mode";
+export const MODERN_MODE ="Modern mode";
 
 // BOTTOM NAVIGATION 
 export const BOTTOM_NAV_HOME ="Home";
