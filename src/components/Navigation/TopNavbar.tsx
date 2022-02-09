@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { MdOutlineCatchingPokemon } from "react-icons/md"
 import { Link } from 'react-router-dom';
+import { TOP_NAV_TITLE } from '../../constants/lang';
 
 const TopNavbar:FC = () => {
   return (<nav className='w-full fixed'>
@@ -11,7 +12,7 @@ const TopNavbar:FC = () => {
                 </span>
                 <span className="font-semibold text-xl tracking-tight ">
                   <Link to="/">
-                    Pokedex
+                    {TOP_NAV_TITLE}
                   </Link>
                 </span>
               </div>

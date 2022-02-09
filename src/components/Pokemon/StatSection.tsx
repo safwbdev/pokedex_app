@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { POKEMON_STATS } from '../../constants/lang';
 import { statColors } from '../../constants/statColors';
 
 interface Props{
@@ -43,7 +44,7 @@ const StatSection:FC<Props> = ({data}) => {
       
     return (
         <>
-            <div className='font-bold text-l mb-2 mt-2'>Statistics</div>
+            <div className='font-bold text-l mb-2 mt-2'>{POKEMON_STATS}</div>
             <div className="mb-4">
 
             {data.map((val:any) => (
@@ -52,6 +53,7 @@ const StatSection:FC<Props> = ({data}) => {
                 </div>
             ))}
             </div>
+            <hr className='sm:hidden' />
         </>
     
   )

@@ -31,47 +31,49 @@ const Pokemon:FC = () => {
     const { pokemon } = pokemonState;
     const { nextPokemon } = nextPokemonState;
     const { prevPokemon } = prevPokemonState;
-
-    // console.log("prev")
-    // console.log(prevPokemon)
-    // console.log("next")
-    // console.log(nextPokemon)
     
     return (<div className="flex flex-wrap py-20">
                 {pokemon && (
                     <>
                         <div className='w-full md:w-1/4'>
                             <img src={mode.classicMode ? pokemon.sprites.front_default : pokemon.sprites.other.home.front_default} style={{width:"100%"}} alt={pokemon.name.toString()} />
-                            {/* <img src={pokemon.sprites.other.home.front_default} style={{width:"100%"}} alt={pokemon.name.toString()} /> */}
                         </div>
-                        <div className='w-full'>
+                        <div className='w-full sm:hidden'>
                             <h2 className="text-3xl font-bold capitalize">{getOrderNo(pokemon.id)} | {pokemon && trimName(pokemon.name.toString())}</h2>
                         </div>
-                        <div className='w-full md:w-1/5'>
-                            <TypeSection data={pokemon.types}/>
-                            <AbilitiesSection data={pokemon.abilities}/>
-                            <OtherInfo weight={pokemon.weight}  height={pokemon.height} />
-                        </div>
-                        <div className='w-full md:w-1/2'>
-                            <StatSection data={pokemon.stats} />
+                        <div className='w-full md:w-3/4'>
+                            <div className="flex flex-wrap justify-center">
+                            <div className='w-full md:w-1/3'>
+                                <TypeSection data={pokemon.types}/>
+                                <AbilitiesSection data={pokemon.abilities}/>
+                                <OtherInfo weight={pokemon.weight}  height={pokemon.height} />
+                            </div>
+                            <div className='w-full md:w-1/2'>
+                                <StatSection data={pokemon.stats} />
+                            </div> 
+                            </div> 
                         </div> 
                         { prevPokemon && (
-                        <div className='w-1/2'>
-                            <Link to={`/pokemon/${prevPokemon.id}`}>
-                                <div className='flex items-center justify-around'>
-                                    <AiFillCaretLeft />
-                                    <span className='capitalize'>{prevPokemon && trimName(prevPokemon?.name.toString())}</span>
-                                </div>
-                            </Link>
+                        <div className='w-1/2 mt-4'>
+                            {Number(pokemon.id) >=1 && (
+                                    <Link to={`/pokemon/${prevPokemon.id}`}>
+                                    <div className='flex items-center justify-around bg-red-600 text-white font-semibold py-2 px-4 border rounded mx-4'>
+                                        <AiFillCaretLeft />
+                                        <span className='capitalize'>{prevPokemon && trimName(prevPokemon?.name.toString())}</span>
+                                    </div>
+                                </Link>
+                            )}
                         </div>
                         )}
                         {nextPokemon && (
-                            <div className='w-1/2'>
-                                <Link to={`/pokemon/${nextPokemon.id}`}>
-                                    <div className='flex items-center justify-around'>
-                                        <span className='capitalize'>{nextPokemon && trimName(nextPokemon?.name.toString())}</span><AiFillCaretRight />
-                                    </div>
-                                </Link>
+                            <div className='w-1/2 mt-4'>
+                                {Number(pokemon.id) >=1 && (
+                                    <Link to={`/pokemon/${nextPokemon.id}`}>
+                                        <div className='flex items-center justify-around bg-red-600 text-white font-semibold py-2 px-4 border rounded mx-4'>
+                                                <span className='capitalize'>{nextPokemon && trimName(nextPokemon?.name.toString())}</span><AiFillCaretRight />
+                                        </div>
+                                    </Link>
+                                )}
                             </div>
                         )}
                     </>

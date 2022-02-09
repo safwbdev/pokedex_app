@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { PokemonBox } from '.';
+import { LOADING_TEXT } from '../constants/lang';
 
 interface Props{
     data:any
@@ -12,7 +13,8 @@ const AllPokemon:FC<Props> = ({data}) => {
     return (<div className='flex flex-wrap py-20'>
                 {data.loading && (
                 <div className='h-screen flex justify-center items-center w-full'>
-                <h2>Loading...</h2></div>
+                    <h2>{LOADING_TEXT}</h2>
+                </div>
                 )}
                 {data.allPokemon && (
                     <div className="flex flex-wrap">

@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { POKEMON_TYPES } from '../../constants/lang';
 import { typeColors } from '../../constants/typeColors';
 
 interface Props{
@@ -19,7 +20,7 @@ const TypeSection:FC<Props> = (data) => {
     
   return (
     <>
-        <div className='font-bold text-l mb-2 mt-2'>Types</div>
+        <div className='font-bold text-l mb-2 mt-2'>{POKEMON_TYPES}</div>
         <div className='mb-4'>
             {data.data.map((val:any) =>(
               <span  

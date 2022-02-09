@@ -36,6 +36,8 @@ function App() {
     <Router>
      <div className="App">
       <TopNavbar />
+      <div className='lg:container lg:mx-auto'>
+
       <Routes>
           <Route path="/" element={<AllPokemon data={allPokemonState}/>} />
           <Route path="/pokemon/:id" element={<Pokemon />} />
@@ -43,6 +45,7 @@ function App() {
           <Route path="/caught" element={<UnderConstruction title="Caught Collection" />} />
         </Routes>
         <BottomNavbar/>
+      </div>
       </div>
     </Router>
   
