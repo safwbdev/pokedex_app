@@ -1,13 +1,9 @@
 import React, { FC } from 'react';
 import {FaWeightHanging, FaRulerVertical} from "react-icons/fa"
 import { POKEMON_HEIGHT, POKEMON_KILO, POKEMON_METER, POKEMON_WEIGHT } from '../../constants/lang';
+import { PropsInfo } from "../../constants/types"
 
-interface Props{
-  height:any,
-  weight:any
-}
-
-const OtherInfo:FC<Props> = (data) => {
+const OtherInfo:FC<PropsInfo> = (data) => {
 
     const getHeight =(h:number):string => `${h/10} ${POKEMON_METER}`;
 

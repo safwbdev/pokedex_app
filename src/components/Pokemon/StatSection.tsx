@@ -1,14 +1,9 @@
 import React, { FC } from 'react';
 import { POKEMON_STATS } from '../../constants/lang';
 import { statColors } from '../../constants/statColors';
+import { PropsB } from "./../../constants/types";
 
-interface Props{
-    data:any
-}
-
-const StatSection:FC<Props> = ({data}) => {
-
-    const trimName =(name:string):string=> name.replace("-"," ");
+const StatSection:FC<PropsB> = ({data, trimName}) => {
 
     const calculateStat =(getStat:number):number=> (getStat * 50) /100;
 

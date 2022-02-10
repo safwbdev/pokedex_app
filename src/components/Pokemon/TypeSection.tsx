@@ -1,12 +1,9 @@
+import { PropsD } from "./../../constants/types"
 import { FC } from 'react';
 import { POKEMON_TYPES } from '../../constants/lang';
-import { typeColors } from '../../constants/typeColors';
+import { typeColors } from '../../constants/typeColors';;
 
-interface Props{
-  data:any,
-}
-
-const TypeSection:FC<Props> = (data) => {
+const TypeSection:FC<PropsD> = (data) => {
     const getBG =(getType:string):string=>{
         let getColor = '';
         typeColors.map(({type, color})=>{

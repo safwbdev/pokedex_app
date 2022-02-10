@@ -2,12 +2,11 @@ import React, { FC, useState, ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { PokemonBox } from '.';
 import { LOADING_TEXT, SEARCH_POKEMON } from '../constants/lang';
+import {PropsA} from "./../constants/types"
 
-interface Props{
-    data:any
-}
 
-const AllPokemon:FC<Props> = ({data}) => {
+
+const AllPokemon:FC<PropsA> = ({data, mode, trimName}) => {
     const [pokemonName, setPokemonName] = useState("");
     const handleChange =(event:ChangeEvent<HTMLInputElement>):void => setPokemonName(event.target.value);
 
@@ -37,9 +36,9 @@ const AllPokemon:FC<Props> = ({data}) => {
                     </div>
                     <div className="flex flex-wrap">
                         {collection.map((val:any, index:any)=>(
-                            <div key={index} className='w-1/3 md:w-1/6'>
+                            <div key={index} className='w-1/3 sm:w-1/6'>
                                 <Link to={`pokemon/${val.id}`}>
-                                    <PokemonBox data={val}/>
+                                    <PokemonBox data={val} mode={mode} trimName={trimName} />
                                 </Link>
                             </div>
                         ))}

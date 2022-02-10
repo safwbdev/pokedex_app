@@ -5,16 +5,16 @@ import { AbilitiesSection, OtherInfo, StatSection, TypeSection } from '..';
 import { rootStore } from './../../redux/store';
 import { getNextPokemon, getPokemon, getPrevPokemon } from './../../redux/actions/pokemonActions';
 import {AiFillCaretLeft, AiFillCaretRight} from "react-icons/ai"
-const Pokemon:FC = () => {
+import { PropsC } from "./../../constants/types"
+
+const Pokemon:FC<PropsC> = ({mode, trimName}) => {
     
     const { id } = useParams();
 
     const dispatch = useDispatch();
     const pokemonState = useSelector((state: rootStore) => state.pokemon);
-    const mode = useSelector((state: rootStore) => state.mode);
     const nextPokemonState = useSelector((state: rootStore) => state.nextPokemon);
     const prevPokemonState = useSelector((state: rootStore) => state.prevPokemon);
-    const trimName =(name:string):string=> name.replace("-"," ");
     
     const getOrderNo =(n:any):string=> {
         let len = 3 - (''+n).length;
@@ -36,7 +36,7 @@ const Pokemon:FC = () => {
                 {pokemon && (
                     <>
                         <div className='w-full md:w-1/4'>
-                            <img src={mode.classicMode ? pokemon.sprites.front_default : pokemon.sprites.other.home.front_default} style={{width:"100%"}} alt={pokemon.name.toString()} />
+                            <img src={mode ? pokemon.sprites.front_default : pokemon.sprites.other.home.front_default} style={{width:"100%"}} alt={pokemon.name.toString()} />
                         </div>
                         <div className='w-full sm:hidden'>
                             <h2 className="text-3xl font-bold capitalize">{getOrderNo(pokemon.id)} | {pokemon && trimName(pokemon.name.toString())}</h2>
@@ -45,11 +45,11 @@ const Pokemon:FC = () => {
                             <div className="flex flex-wrap justify-center">
                             <div className='w-full md:w-1/3'>
                                 <TypeSection data={pokemon.types}/>
-                                <AbilitiesSection data={pokemon.abilities}/>
+                                <AbilitiesSection data={pokemon.abilities} trimName={trimName} />
                                 <OtherInfo weight={pokemon.weight}  height={pokemon.height} />
                             </div>
                             <div className='w-full md:w-1/2'>
-                                <StatSection data={pokemon.stats} />
+                                <StatSection data={pokemon.stats} trimName={trimName} />
                             </div> 
                             </div> 
                         </div> 
